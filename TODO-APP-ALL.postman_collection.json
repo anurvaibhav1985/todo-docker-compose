@@ -1,0 +1,444 @@
+{
+	"info": {
+		"_postman_id": "d1e1b543-9257-411c-bf9d-17077d9d9796",
+		"name": "TODO-APP-ALL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get TODO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/todos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign ToDo to users",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"todoId\": 1,\r\n    \"emailAddresses\": [\"user2\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/todos/assign",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos",
+						"assign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get tasks for TODO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tasks?active.equals=Y&todoId.equals=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "active.equals",
+							"value": "Y"
+						},
+						{
+							"key": "todoId.equals",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Tasks to users",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"todoId\":1,\r\n    \"tasks\": [1,2,3],\r\n    \"emailAddresses\": [\"user5\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/tasks/assign",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"assign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task Instances for User sorted",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/task-instances?active.equals=Y&userId.equals=4&sort=timeSpent,desc,id,asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task-instances"
+					],
+					"query": [
+						{
+							"key": "active.equals",
+							"value": "Y"
+						},
+						{
+							"key": "userId.equals",
+							"value": "4"
+						},
+						{
+							"key": "sort",
+							"value": "timeSpent,desc,id,asc"
+						},
+						{
+							"key": "sort",
+							"value": "id,asc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task Instance - Effort , status , desc etc",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 1007,\r\n        \"desc\": \"I've spent some effort in task 1\",\r\n        \"status\": \"INPROGRESS\",\r\n        \"timeSpent\": 6\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/task-instances/1007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task-instances",
+						"1007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dashboard for user who has logged in",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/todos/dashboard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos",
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task Instances upcoming",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/task-instances?active.equals=Y&plannedStartDate.greaterThanOrEqual=2021-06-19T00:00:00Z&status.equals=NOTSTARTED&plannedStartDate.lessThanOrEqual=2021-06-21T00:00:00Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task-instances"
+					],
+					"query": [
+						{
+							"key": "active.equals",
+							"value": "Y"
+						},
+						{
+							"key": "plannedStartDate.greaterThanOrEqual",
+							"value": "2021-06-19T00:00:00Z"
+						},
+						{
+							"key": "status.equals",
+							"value": "NOTSTARTED"
+						},
+						{
+							"key": "plannedStartDate.lessThanOrEqual",
+							"value": "2021-06-21T00:00:00Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task Instances due",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/task-instances?active.equals=Y&plannedStartDate.greaterThanOrEqual=2021-06-19T00:00:00Z&status.equals=NOTSTARTED",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task-instances"
+					],
+					"query": [
+						{
+							"key": "active.equals",
+							"value": "Y"
+						},
+						{
+							"key": "plannedStartDate.greaterThanOrEqual",
+							"value": "2021-06-19T00:00:00Z"
+						},
+						{
+							"key": "status.equals",
+							"value": "NOTSTARTED"
+						},
+						{
+							"key": "plannedStartDate.lessThanOrEqual",
+							"value": "2021-06-21T00:00:00Z",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Soft delete Task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/tasks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Multiple people's effort on same task",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/task-instances?active.equals=Y&taskId.equals=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"task-instances"
+					],
+					"query": [
+						{
+							"key": "active.equals",
+							"value": "Y"
+						},
+						{
+							"key": "taskId.equals",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "username",
+				"value": "user5",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "admin",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "dev",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "openid",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "password_credentials",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "web_app",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "web_app",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "http://keycloak:9080/auth/realms/jhipster/protocol/openid-connect/token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
