@@ -1,0 +1,6 @@
+deployment { 
+  deploymentType docker-compose
+  appsFolders [todo]
+  dockerRepositoryName "anurvaibhav1985"
+  serviceDiscoveryType no
+}

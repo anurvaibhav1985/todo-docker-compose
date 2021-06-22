@@ -1,0 +1,13 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["todoApp"],
+    "directoryPath": "../",
+    "gatewayType": "SpringCloudGateway",
+    "clusteredDbApps": [],
+    "monitoring": "no",
+    "serviceDiscoveryType": false,
+    "deploymentType": "docker-compose",
+    "dockerRepositoryName": "anurvaibhav1985",
+    "jwtSecretKey": "NTdkZmEzMDMyMDkzMGJhMzk2NmI2Yjg4NWIxMDA2ZjBjMjc2YzcxODZmZTcwMmFjYTdkYzJhOTViNWZlMDBjMjNiMWZiNzQ5MWU1NjIzYzEyM2FiMzdjZGJiN2Y2ODMwMTZhZA=="
+  }
+}
